@@ -1,0 +1,32 @@
+{
+  "name": "privacy-regulatory-reporting-example",
+  "version": "1.0.0",
+  "description": "Privacy-Preserving Regulatory Reporting System using @fhevm-template/sdk",
+  "private": true,
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.js --network sepolia",
+    "verify": "hardhat run scripts/verify.js --network sepolia",
+    "interact": "hardhat run scripts/interact.js --network sepolia"
+  },
+  "keywords": [
+    "fhevm",
+    "privacy",
+    "regulatory",
+    "compliance",
+    "blockchain"
+  ],
+  "author": "Privacy Compliance Team",
+  "license": "MIT",
+  "dependencies": {
+    "@fhevm-template/sdk": "workspace:*",
+    "fhevm": "^0.5.0",
+    "ethers": "^6.9.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.19.0",
+    "dotenv": "^16.3.1"
+  }
+}
