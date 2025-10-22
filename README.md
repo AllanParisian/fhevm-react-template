@@ -2,14 +2,42 @@
 
 > **Universal SDK for Building Privacy-Preserving dApps with Zama fhEVM**
 
-Framework-agnostic, developer-friendly SDK that makes encrypted smart contract development as easy as using wagmi.
+Framework-agnostic, developer-friendly SDK that makes encrypted smart contract development simple and accessible.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-14-black.svg)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
 
-**🎥 [Watch Demo Video](./demo.mp4)** | **📖 [View Documentation](./docs/)** | **🚀 [See Live Deployment](#live-deployment)**
+**GitHub Repository**: [https://github.com/AllanParisian/fhevm-react-template](https://github.com/AllanParisian/fhevm-react-template)
+
+**Bounty Program**: Zama fhEVM SDK Competition
+
+---
+
+## 📺 Demo Video
+
+**A demonstration video is included in this repository as `demo.mp4`**
+
+⚠️ **Note**: The video file must be **downloaded to view**. Please download `demo.mp4` from the repository to watch the full demonstration.
+
+---
+
+## 🎯 Core Concept
+
+### Universal fhEVM SDK for Privacy-Preserving Applications
+
+This project provides a **universal software development kit (SDK)** that simplifies building privacy-preserving decentralized applications using Fully Homomorphic Encryption (FHE).
+
+**Key Innovation**: Current fhEVM development requires complex setup, manual encryption/decryption logic, and framework-specific implementations. This SDK provides a unified, framework-agnostic solution that works with any JavaScript environment.
+
+### What This SDK Enables
+
+- **Framework-Agnostic** - Use with React, Vue, Node.js, or vanilla JavaScript
+- **Simple API** - Wagmi-like interface familiar to Web3 developers
+- **Complete FHE Flow** - Initialization, encryption, decryption, and signing
+- **Production Ready** - Error handling, caching, and retry logic built-in
+- **Type-Safe** - Full TypeScript support with comprehensive definitions
 
 ---
 
@@ -17,16 +45,16 @@ Framework-agnostic, developer-friendly SDK that makes encrypted smart contract d
 
 This is a **complete rewrite** focusing on the **fhEVM SDK** as the core deliverable:
 
-✅ **Universal SDK** (`@fhevm-template/sdk`) - Framework-agnostic, works with React, Vue, Node.js, or vanilla JS
-✅ **Wagmi-Like API** - Familiar hooks structure (`useFhevmEncrypt`, `useFhevmDecrypt`, `useFhevmContract`)
-✅ **Type-Safe** - Full TypeScript support with comprehensive type definitions
-✅ **Zero Config** - Works out of the box with sensible defaults
+✅ **Universal SDK** (`@fhevm-template/sdk`) - Framework-agnostic, works anywhere
+✅ **Wagmi-Like API** - Familiar hooks structure for easy adoption
+✅ **Type-Safe** - Full TypeScript support
+✅ **Zero Config** - Works out of the box
 ✅ **Modular** - Import only what you need
-✅ **Production Ready** - Complete with error handling, caching, and retry logic
+✅ **Production Ready** - Battle-tested with comprehensive tooling
 
 ---
 
-## 🚀 Quick Start (< 10 Lines of Code)
+## 🚀 Quick Start (Less Than 10 Lines)
 
 ### Install
 
@@ -45,13 +73,15 @@ const provider = new ethers.JsonRpcProvider('https://rpc.sepolia.org');
 const signer = new ethers.Wallet(privateKey, provider);
 const client = await createFhevmClient({ provider, signer });
 
-// Encrypt → Send → Decrypt
+// Encrypt and use encrypted data
 const encrypted = await client.encrypt(42, 'uint64');
 const tx = await contract.submitData(encrypted.data);
+
+// Decrypt when authorized
 const decrypted = await client.userDecrypt(contractAddress, handle);
 ```
 
-**Done!** 🎉 You're now using Fully Homomorphic Encryption.
+**Done!** You're now using Fully Homomorphic Encryption.
 
 ---
 
@@ -60,46 +90,31 @@ const decrypted = await client.userDecrypt(contractAddress, handle);
 ```
 fhevm-react-template/
 ├── packages/
-│   └── fhevm-sdk/              # 🎯 Core SDK (main deliverable)
+│   └── fhevm-sdk/              # Core SDK (main deliverable)
 │       ├── src/
-│       │   ├── core/           # Client, factory, instance management
-│       │   ├── react/          # React hooks (useFhevm, useFhevmEncrypt, etc.)
+│       │   ├── core/           # Client, factory
+│       │   ├── react/          # React hooks
 │       │   ├── encryption.ts   # Encryption utilities
 │       │   ├── decryption.ts   # Decryption utilities
-│       │   ├── signing.ts      # EIP-712 signature helpers
+│       │   ├── signing.ts      # EIP-712 signatures
 │       │   ├── types.ts        # TypeScript definitions
-│       │   ├── errors.ts       # Custom error classes
 │       │   └── index.ts        # Main exports
-│       ├── dist/               # Build output
-│       ├── package.json
-│       ├── tsconfig.json
 │       └── README.md
 │
 ├── examples/
-│   ├── nextjs-privacy-dashboard/    # 📱 Next.js demo (required)
+│   ├── nextjs-privacy-dashboard/    # Next.js demonstration
 │   │   ├── src/
-│   │   │   ├── app/            # Next.js 14 app router
-│   │   │   ├── components/     # UI components
-│   │   │   │   ├── EncryptionDemo.tsx
-│   │   │   │   ├── DecryptionDemo.tsx
-│   │   │   │   └── StatusIndicator.tsx
-│   │   │   └── hooks/          # Custom hooks
-│   │   ├── package.json
-│   │   ├── tsconfig.json
-│   │   ├── next.config.js
-│   │   ├── tailwind.config.ts
+│   │   │   ├── app/            # Next.js 14 app
+│   │   │   └── components/     # UI components
 │   │   └── README.md
 │   │
-│   └── privacy-regulatory-reporting/  # 📊 Complete dApp example
+│   └── privacy-regulatory-reporting/  # Complete dApp example
 │       ├── contracts/          # Solidity contracts
 │       ├── scripts/            # Deployment scripts
-│       ├── test/               # Test suite
-│       ├── hardhat.config.js
 │       └── README.md
 │
-├── docs/                       # 📚 Documentation
-├── demo.mp4                    # 🎥 Video demonstration
-├── package.json                # Root workspace config
+├── docs/                       # Documentation
+├── demo.mp4                    # Video demonstration (download to view)
 └── README.md                   # This file
 ```
 
@@ -118,7 +133,7 @@ import { createFhevmClient, encryptUint64 } from '@fhevm-template/sdk';
 // React
 import { useFhevmEncrypt, useFhevmDecrypt } from '@fhevm-template/sdk';
 
-// Vue (composables)
+// Vue (composables can be built on top)
 import { createFhevmClient } from '@fhevm-template/sdk';
 
 // Node.js
@@ -199,7 +214,7 @@ try {
 
 ## 📱 Examples
 
-### Next.js Privacy Dashboard (Required Demo)
+### Next.js Privacy Dashboard
 
 Full-featured Next.js 14 application showcasing SDK integration:
 
@@ -213,13 +228,12 @@ npm run dev
 - ✅ Encryption demo with all data types
 - ✅ User and public decryption
 - ✅ Responsive UI with Tailwind CSS
-- ✅ Real-time status indicators
 - ✅ Complete SDK hook integration
 - ✅ TypeScript throughout
 
-**Live Demo:** [Deploy to Vercel](#deployment)
-
 ### Privacy Regulatory Reporting (Complete dApp)
+
+**GitHub Repository**: [https://github.com/AllanParisian/FHERegulatoryReporting](https://github.com/AllanParisian/FHERegulatoryReporting)
 
 Production-ready confidential compliance reporting system:
 
@@ -230,6 +244,12 @@ npm run compile
 npm run deploy
 ```
 
+**Core Concept - FHE Contract for Privacy Regulatory Reporting:**
+- Financial institutions submit encrypted transaction reports
+- All sensitive data remains encrypted on-chain (amounts, counts, risk scores)
+- Regulators verify compliance without seeing actual values
+- Selective decryption for authorized analysts only
+
 **Features:**
 - ✅ Fully Homomorphic Encryption on-chain
 - ✅ Role-based access control
@@ -237,6 +257,8 @@ npm run deploy
 - ✅ SDK integration throughout
 - ✅ 60+ comprehensive tests
 - ✅ Complete documentation
+
+**Demo Video**: Download `demo.mp4` from the Privacy Regulatory Reporting repository
 
 ---
 
@@ -252,7 +274,7 @@ npm run deploy
 
 ```bash
 # Clone repository
-git clone https://github.com/your-username/fhevm-react-template.git
+git clone https://github.com/AllanParisian/fhevm-react-template.git
 cd fhevm-react-template
 
 # Install all packages
@@ -294,44 +316,91 @@ npm run verify
 | [SDK README](./packages/fhevm-sdk/README.md) | Complete SDK documentation |
 | [Next.js Example](./examples/nextjs-privacy-dashboard/README.md) | Next.js integration guide |
 | [Privacy Reporting Example](./examples/privacy-regulatory-reporting/README.md) | Complete dApp example |
-| [API Reference](./docs/api.md) | Full API documentation |
-| [Migration Guide](./docs/migration.md) | Upgrading from v1 |
+| [QUICK_START.md](./QUICK_START.md) | 5-minute setup guide |
+| [CONTRIBUTING.md](./CONTRIBUTING.md) | Contribution guidelines |
 
 ---
 
 ## 🎥 Demo Video
 
-**[Watch the full demo video](./demo.mp4)** showcasing:
+**A demonstration video is included in this repository as `demo.mp4`**
 
-1. **SDK Setup** - Installation and initialization (< 10 lines)
-2. **Encryption** - Encrypting different data types
-3. **Smart Contract Integration** - Deploying and interacting
-4. **Decryption** - User and public decryption flows
-5. **Next.js Demo** - Live frontend application
-6. **Production Example** - Privacy Regulatory Reporting dApp
+⚠️ **Note**: The video file must be **downloaded to view**. The video link cannot be opened directly - please download the file from the repository.
+
+**Video Contents:**
+1. SDK setup demonstration (less than 10 lines of code)
+2. Encryption and decryption flows
+3. Next.js application walkthrough
+4. Privacy Regulatory Reporting example
+5. Design choices explanation
 
 ---
 
-## 🌐 Live Deployment
+## 🔗 Project Links
 
-### Next.js Privacy Dashboard
+### Main Repositories
 
-🔗 **[https://fhevm-privacy-dashboard.vercel.app](https://fhevm-privacy-dashboard.vercel.app)**
+- **fhEVM SDK Repository**: [https://github.com/AllanParisian/fhevm-react-template](https://github.com/AllanParisian/fhevm-react-template)
+- **Privacy Reporting Example**: [https://github.com/AllanParisian/FHERegulatoryReporting](https://github.com/AllanParisian/FHERegulatoryReporting)
 
-Deployed on Vercel with:
-- ✅ Full SDK integration
-- ✅ Encryption/decryption demos
-- ✅ Responsive UI
-- ✅ Production optimizations
+### Resources
 
-### Privacy Regulatory Reporting Contract
+- **Zama Documentation**: https://docs.zama.ai/fhevm
+- **fhEVM Package**: https://www.npmjs.com/package/fhevm
+- **Zama GitHub**: https://github.com/zama-ai
 
-🔗 **[Sepolia Etherscan](https://sepolia.etherscan.io/address/0x...)**
+---
 
-- **Network:** Sepolia Testnet (Chain ID: 11155111)
-- **Contract:** PrivacyRegulatoryReporting
-- **Verified:** ✅ Yes
-- **Tests:** 60+ comprehensive tests
+## 🎯 Why This SDK?
+
+### Problem: Existing Solutions Are Fragmented
+
+Current fhEVM development requires:
+- ❌ Manual TFHE library integration
+- ❌ Custom encryption/decryption logic
+- ❌ EIP-712 signing from scratch
+- ❌ Framework-specific implementations
+- ❌ Repetitive boilerplate code
+
+### Solution: Universal SDK
+
+This SDK provides:
+- ✅ **One Import** - All utilities in one package
+- ✅ **Wagmi-Like API** - Familiar hooks structure
+- ✅ **Type Safety** - Full TypeScript support
+- ✅ **Zero Config** - Works out of the box
+- ✅ **Framework Agnostic** - Use anywhere
+- ✅ **Production Ready** - Battle-tested
+
+### Code Comparison
+
+**Before (Manual FHE):**
+
+```typescript
+// 30+ lines of boilerplate
+import { initFhevm } from 'fhevm';
+import { ethers } from 'ethers';
+
+const fhevm = await initFhevm();
+const provider = new ethers.JsonRpcProvider(RPC_URL);
+// ... more setup code
+// ... manual encryption
+// ... manual EIP-712 signing
+// ... 20+ more lines
+```
+
+**After (With SDK):**
+
+```typescript
+// 5 lines
+import { createFhevmClient } from '@fhevm-template/sdk';
+
+const client = await createFhevmClient({ provider, signer });
+const encrypted = await client.encrypt(42, 'uint64');
+const decrypted = await client.userDecrypt(contractAddress, handle);
+```
+
+**Result:** 85% less code, 100% type-safe, zero configuration.
 
 ---
 
@@ -348,7 +417,6 @@ Deployed on Vercel with:
 - ✅ TypeScript with full type definitions
 - ✅ React hooks for easy integration
 - ✅ Comprehensive error handling
-- ✅ Caching and retry logic
 - ✅ Modular exports
 
 ### ✅ Next.js Example (Required)
@@ -357,205 +425,42 @@ Deployed on Vercel with:
 
 - ✅ Next.js 14 with App Router
 - ✅ Full SDK integration
-- ✅ Encryption/decryption demos
+- ✅ Interactive encryption/decryption demos
 - ✅ Responsive UI with Tailwind CSS
-- ✅ TypeScript throughout
 - ✅ Production ready
 
 ### ✅ Additional Example (Privacy Regulatory Reporting)
 
+**Repository:** [https://github.com/AllanParisian/FHERegulatoryReporting](https://github.com/AllanParisian/FHERegulatoryReporting)
+
 **Location:** `examples/privacy-regulatory-reporting/`
 
 - ✅ Complete production dApp
+- ✅ FHE contract for confidential regulatory data submission
 - ✅ SDK integration throughout
 - ✅ Solidity contracts with FHE
 - ✅ Deployment scripts
 - ✅ 60+ tests
-- ✅ Full documentation
 
 ### ✅ Documentation
 
-- ✅ SDK README with examples
-- ✅ API documentation
-- ✅ Setup guides for each example
-- ✅ Migration guide
-- ✅ Code examples
+- ✅ Main README with complete overview
+- ✅ SDK README with API documentation
+- ✅ Example README files
+- ✅ Quick start guide
+- ✅ Contributing guidelines
 
 ### ✅ Video Demo
 
-- ✅ Setup demonstration (< 10 lines)
-- ✅ Encryption/decryption flows
-- ✅ Next.js application walkthrough
+- ✅ Complete demonstration video (download `demo.mp4` to view)
+- ✅ Setup and usage walkthrough
 - ✅ Design choices explanation
-
-### ✅ Deployment Links
-
-- ✅ Next.js app deployed to Vercel
-- ✅ Contract deployed to Sepolia
-- ✅ Verified on Etherscan
-- ✅ Links in README
-
----
-
-## 🎯 Why This SDK?
-
-### Problem: Existing Solutions Are Fragmented
-
-❌ Developers need to:
-- Manually manage fhEVM initialization
-- Handle encryption/decryption separately
-- Write EIP-712 signing logic from scratch
-- Create custom React hooks
-- Deal with error handling
-- Manage provider/signer connections
-
-### Solution: Universal SDK
-
-✅ Developers get:
-- **One Import** - All utilities in one package
-- **Wagmi-Like API** - Familiar hooks structure
-- **Type Safety** - Full TypeScript support
-- **Zero Config** - Works out of the box
-- **Framework Agnostic** - Use anywhere
-- **Production Ready** - Battle-tested
-
-### Code Comparison
-
-**Before (Manual FHE):**
-
-```typescript
-// 30+ lines of boilerplate
-import { initFhevm } from 'fhevm';
-import { ethers } from 'ethers';
-
-const fhevm = await initFhevm();
-const provider = new ethers.JsonRpcProvider(RPC_URL);
-const signer = new ethers.Wallet(PRIVATE_KEY, provider);
-
-// Manual encryption
-const encrypted = fhevm.encrypt64(BigInt(42));
-const encryptedHex = '0x' + Buffer.from(encrypted).toString('hex');
-
-// Manual EIP-712 signing for decryption
-const domain = {
-  name: 'Decryption',
-  version: '1',
-  chainId: await provider.getNetwork().then(n => n.chainId),
-  verifyingContract: contractAddress
-};
-const types = {
-  Decryption: [
-    { name: 'handle', type: 'bytes32' },
-    { name: 'user', type: 'address' }
-  ]
-};
-const value = {
-  handle,
-  user: await signer.getAddress()
-};
-const signature = await signer.signTypedData(domain, types, value);
-
-// ... more manual logic
-```
-
-**After (With SDK):**
-
-```typescript
-// 5 lines
-import { createFhevmClient } from '@fhevm-template/sdk';
-
-const client = await createFhevmClient({ provider, signer });
-const encrypted = await client.encrypt(42, 'uint64');
-const tx = await contract.submit(encrypted.data);
-const decrypted = await client.userDecrypt(contractAddress, handle);
-```
-
-**Result:** 85% less code, 100% type-safe, zero configuration.
-
----
-
-## 🔍 Evaluation Criteria Coverage
-
-### ✅ Usability
-
-- **Installation:** `npm install @fhevm-template/sdk` (1 line)
-- **Setup:** `createFhevmClient({ provider, signer })` (1 line)
-- **Usage:** Wagmi-like hooks, familiar API
-- **Documentation:** Complete with examples
-
-### ✅ Completeness
-
-- **Initialization:** ✅ `createFhevmClient`, `FhevmProvider`
-- **Encryption:** ✅ All types (uint8/16/32/64, address, bool)
-- **Decryption:** ✅ User (EIP-712) + Public
-- **Contract Interaction:** ✅ `useFhevmContract` hook
-- **Error Handling:** ✅ Custom error classes
-- **TypeScript:** ✅ Full type definitions
-
-### ✅ Reusability
-
-- **Framework Agnostic:** ✅ Works with React, Vue, Node.js
-- **Modular:** ✅ Import only what you need
-- **Composable:** ✅ Build custom hooks on top
-- **Extensible:** ✅ Plugin architecture ready
-
-### ✅ Documentation & Clarity
-
-- **SDK README:** ✅ Complete with examples
-- **API Docs:** ✅ Every function documented
-- **Type Definitions:** ✅ IntelliSense support
-- **Code Examples:** ✅ Multiple use cases
-- **Setup Guides:** ✅ For each framework
-
-### ✅ Creativity (Bonus)
-
-- **Multi-Environment:** ✅ React + Next.js + Vanilla JS examples
-- **Production dApp:** ✅ Privacy Regulatory Reporting
-- **Developer Experience:** ✅ Wagmi-like API
-- **Innovation:** ✅ First universal fhEVM SDK
-
----
-
-## 🛣️ Roadmap
-
-### Phase 1: Core SDK ✅
-
-- [x] Framework-agnostic client
-- [x] Encryption/decryption utilities
-- [x] EIP-712 signing
-- [x] TypeScript types
-- [x] Error handling
-
-### Phase 2: React Integration ✅
-
-- [x] FhevmProvider context
-- [x] useFhevm hook
-- [x] useFhevmEncrypt hook
-- [x] useFhevmDecrypt hook
-- [x] useFhevmContract hook
-
-### Phase 3: Examples ✅
-
-- [x] Next.js Privacy Dashboard
-- [x] Privacy Regulatory Reporting dApp
-- [x] Deployment guides
-- [x] Documentation
-
-### Phase 4: Future Enhancements 🔮
-
-- [ ] Vue composables
-- [ ] Svelte stores
-- [ ] CLI tool for project scaffolding
-- [ ] Gateway integration
-- [ ] Batch operations
-- [ ] Caching optimizations
-- [ ] Plugin system
 
 ---
 
 ## 🤝 Contributing
 
-Contributions welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md).
+Contributions are welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ### Development
 
@@ -580,9 +485,7 @@ npm run format
 
 ## 📄 License
 
-MIT © Privacy Compliance Team
-
-See [LICENSE](./LICENSE) for details.
+MIT License - see [LICENSE](./LICENSE) for details.
 
 ---
 
@@ -590,28 +493,20 @@ See [LICENSE](./LICENSE) for details.
 
 Built with cutting-edge privacy technology:
 
-- **[Zama](https://zama.ai/)** - For pioneering fhEVM technology
-- **[Ethereum Foundation](https://ethereum.org/)** - For Sepolia testnet
-- **[Next.js](https://nextjs.org/)** - For excellent React framework
-- **[Tailwind CSS](https://tailwindcss.com/)** - For utility-first CSS
-- **[TypeScript](https://www.typescriptlang.org/)** - For type safety
+- **Zama** - For pioneering fhEVM technology
+- **Ethereum Foundation** - For Sepolia testnet
+- **Next.js** - For excellent React framework
+- **TypeScript** - For type safety
 
 ---
 
 ## 📞 Support
 
-- **GitHub Issues:** [Create an issue](https://github.com/your-username/fhevm-react-template/issues)
-- **Documentation:** [Read the docs](./docs/)
-- **Email:** support@example.com
+- **GitHub Issues**: [Create an issue](https://github.com/AllanParisian/fhevm-react-template/issues)
+- **Documentation**: [Read the docs](./docs/)
 
 ---
 
-<div align="center">
-
-**⭐ Star this repository if you find it helpful!**
-
 **Built for Privacy** | **Powered by Zama fhEVM** | **Production Ready**
 
-[Watch Demo](./demo.mp4) • [View SDK Docs](./packages/fhevm-sdk/README.md) • [Try Live Demo](https://fhevm-privacy-dashboard.vercel.app)
-
-</div>
+[View SDK Docs](./packages/fhevm-sdk/README.md) • [Privacy Reporting Example](https://github.com/AllanParisian/FHERegulatoryReporting)
