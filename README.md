@@ -101,11 +101,53 @@ fhevm-react-template/
 │       │   └── index.ts        # Main exports
 │       └── README.md
 │
+├── templates/                  # Example templates (symlink to examples/)
+│   ├── nextjs/                 # Next.js template
+│   ├── react/                  # React template (optional)
+│   └── vue/                    # Vue template (optional)
+│
 ├── examples/
 │   ├── nextjs-privacy-dashboard/    # Next.js demonstration
 │   │   ├── src/
-│   │   │   ├── app/            # Next.js 14 app
-│   │   │   └── components/     # UI components
+│   │   │   ├── app/            # Next.js 14 App Router
+│   │   │   │   ├── api/        # API routes
+│   │   │   │   │   ├── fhe/    # FHE operations
+│   │   │   │   │   │   ├── route.ts
+│   │   │   │   │   │   ├── encrypt/route.ts
+│   │   │   │   │   │   ├── decrypt/route.ts
+│   │   │   │   │   │   └── compute/route.ts
+│   │   │   │   │   └── keys/route.ts
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── globals.css
+│   │   │   ├── components/     # React components
+│   │   │   │   ├── ui/         # UI components
+│   │   │   │   │   ├── Button.tsx
+│   │   │   │   │   ├── Input.tsx
+│   │   │   │   │   └── Card.tsx
+│   │   │   │   ├── fhe/        # FHE components
+│   │   │   │   │   ├── FHEProvider.tsx
+│   │   │   │   │   ├── KeyManager.tsx
+│   │   │   │   │   └── ComputationDemo.tsx
+│   │   │   │   └── examples/   # Use case examples
+│   │   │   │       ├── BankingExample.tsx
+│   │   │   │       └── MedicalExample.tsx
+│   │   │   ├── lib/            # Utility libraries
+│   │   │   │   ├── fhe/        # FHE integration
+│   │   │   │   │   ├── client.ts
+│   │   │   │   │   ├── server.ts
+│   │   │   │   │   ├── keys.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   └── utils/      # Helper functions
+│   │   │   │       ├── security.ts
+│   │   │   │       └── validation.ts
+│   │   │   ├── hooks/          # Custom React hooks
+│   │   │   │   ├── useFHE.ts
+│   │   │   │   ├── useEncryption.ts
+│   │   │   │   └── useComputation.ts
+│   │   │   └── types/          # TypeScript types
+│   │   │       ├── fhe.ts
+│   │   │       └── api.ts
 │   │   └── README.md
 │   │
 │   └── privacy-regulatory-reporting/  # Complete dApp example
@@ -114,6 +156,14 @@ fhevm-react-template/
 │       └── README.md
 │
 ├── docs/                       # Documentation
+│   ├── README.md
+│   ├── api.md
+│   ├── examples.md
+│   └── migration.md
+│
+├── QUICK_START.md              # Quick start guide
+├── CONTRIBUTING.md             # Contribution guidelines
+├── LICENSE                     # MIT License
 ├── demo.mp4                    # Video demonstration (download to view)
 └── README.md                   # This file
 ```
@@ -309,6 +359,95 @@ npm run verify
 
 ---
 
+## 🆕 Standalone Privacy Regulatory Reporting Project
+
+**Location**: `D:\privacy-regulatory-reporting` (Independent deployment-ready version)
+
+A **production-ready**, **standalone** blockchain-based confidential regulatory reporting platform that can be deployed independently from the SDK monorepo.
+
+### 🌟 Overview
+
+This is a fully-featured, deployment-ready implementation that demonstrates real-world use of the fhEVM SDK in a compliance reporting context. Unlike the example in the monorepo, this is a complete, production-grade application.
+
+### 🛠️ Technology Stack
+
+**Blockchain Layer:**
+- Solidity ^0.8.24 - Smart contract development
+- fhEVM Protocol - Fully Homomorphic Encryption on EVM
+- TFHE Library - Zama's encrypted computation library
+- Sepolia Testnet - Ethereum test network
+- Hardhat - Development environment
+
+**Frontend Layer:**
+- Next.js 14 - React framework with App Router
+- TypeScript - Type-safe development
+- Tailwind CSS - Utility-first styling
+- ethers.js v6 - Ethereum blockchain interaction
+- @fhevm-template/sdk - FHE SDK integration
+
+**Encryption Technology:**
+- Zama fhEVM - FHE virtual machine
+- TFHE-rs - Rust-based FHE implementation
+- Encrypted Types - euint8, euint32, euint64 for different data ranges
+
+### 🚀 Quick Start
+
+```bash
+# Navigate to standalone project
+cd D:\privacy-regulatory-reporting
+
+# Install dependencies
+npm install
+
+# Compile smart contracts
+npm run compile
+
+# Deploy to Sepolia testnet
+npm run deploy
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+### 🔐 Key Features
+
+- **Privacy-Preserving Submissions** - Submit confidential financial data that remains encrypted on-chain
+- **Multi-Party Authorization** - Regulator-controlled entity authorization system
+- **Reporting Period Management** - Time-bound reporting windows with deadline enforcement
+- **Secure Data Access** - Granular decryption permissions with immutable access logs
+- **Real-Time Compliance Tracking** - Monitor submission and verification progress
+- **Role-Based Access Control** - Owner, Regulator, and Authorized Entity permissions
+
+### 📊 Smart Contract
+
+**Deployed Address**: `0x0B7F69092DF31270DE216D07ca22B3B8ee237154`
+**Network**: Sepolia Testnet
+**Contract**: `PrivacyRegulatoryReporting.sol`
+
+**Core Functions:**
+- Entity authorization and management
+- Encrypted report submission (euint64, euint32, euint8)
+- Reporting period creation and management
+- Report verification by regulators
+- Controlled decryption access for analysts
+
+### 📝 Use Cases
+
+- **Financial Compliance**: AML reporting, SAR, LTR, CTR
+- **Regulatory Oversight**: Cross-border transaction monitoring, risk assessment
+- **Privacy-Critical Industries**: Banking, cryptocurrency exchanges, payment processors
+
+### 📚 Documentation
+
+Full documentation available at: `D:\privacy-regulatory-reporting\README.md`
+
+**Demo Video**: `PrivacyRegulatoryReporting.mp4` (included in project)
+
+---
+
 ## 📚 Documentation
 
 | Document | Description |
@@ -316,6 +455,7 @@ npm run verify
 | [SDK README](./packages/fhevm-sdk/README.md) | Complete SDK documentation |
 | [Next.js Example](./examples/nextjs-privacy-dashboard/README.md) | Next.js integration guide |
 | [Privacy Reporting Example](./examples/privacy-regulatory-reporting/README.md) | Complete dApp example |
+| [Standalone Privacy Reporting](D:/privacy-regulatory-reporting/README.md) | Production-ready standalone project |
 | [QUICK_START.md](./QUICK_START.md) | 5-minute setup guide |
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | Contribution guidelines |
 
@@ -342,6 +482,13 @@ npm run verify
 
 - **fhEVM SDK Repository**: [https://github.com/AllanParisian/fhevm-react-template](https://github.com/AllanParisian/fhevm-react-template)
 - **Privacy Reporting Example**: [https://github.com/AllanParisian/FHERegulatoryReporting](https://github.com/AllanParisian/FHERegulatoryReporting)
+
+### Standalone Projects
+
+- **Privacy Regulatory Reporting** (Production-ready): `D:\privacy-regulatory-reporting`
+  - Independent deployment-ready version
+  - Smart contract deployed at: `0x0B7F69092DF31270DE216D07ca22B3B8ee237154`
+  - Includes demo video: `PrivacyRegulatoryReporting.mp4`
 
 ### Resources
 
@@ -433,14 +580,18 @@ const decrypted = await client.userDecrypt(contractAddress, handle);
 
 **Repository:** [https://github.com/AllanParisian/FHERegulatoryReporting](https://github.com/AllanParisian/FHERegulatoryReporting)
 
-**Location:** `examples/privacy-regulatory-reporting/`
+**Monorepo Location:** `examples/privacy-regulatory-reporting/`
+
+**Standalone Location:** `D:\privacy-regulatory-reporting` (Production-ready deployment)
 
 - ✅ Complete production dApp
 - ✅ FHE contract for confidential regulatory data submission
 - ✅ SDK integration throughout
-- ✅ Solidity contracts with FHE
-- ✅ Deployment scripts
-- ✅ 60+ tests
+- ✅ Solidity contracts with FHE (PrivacyRegulatoryReporting.sol)
+- ✅ Deployment scripts (Deployed at: `0x0B7F69092DF31270DE216D07ca22B3B8ee237154`)
+- ✅ 60+ comprehensive tests
+- ✅ Standalone deployment-ready version with demo video
+- ✅ Full technology stack: Next.js 14, TypeScript, Tailwind CSS, Hardhat
 
 ### ✅ Documentation
 
