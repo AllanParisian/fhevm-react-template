@@ -9,7 +9,7 @@ Framework-agnostic, developer-friendly SDK that makes encrypted smart contract d
 [![Next.js](https://img.shields.io/badge/Next.js-14-black.svg)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
 
-**GitHub Repository**: [https://github.com/AllanParisian/fhevm-react-template](https://github.com/AllanParisian/fhevm-react-template)
+**Live Demo**: [https://fhe-regulatory-reporting.vercel.app/](https://fhe-regulatory-reporting.vercel.app/)  
 
 **Bounty Program**: Zama fhEVM SDK Competition
 
